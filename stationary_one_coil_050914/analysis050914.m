@@ -1,5 +1,5 @@
 %% one coil with stationary sphere and mag ramp
-import = 0;
+import = 1;
 
 if import 
 %     t1 =  [46155,46212,46310,46412,46520,46610,46706,46806,46907,47010,47111];

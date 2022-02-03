@@ -1,19 +1,20 @@
-% magnets wired as quadrupole with poles both south and equator north
-
-import = 0;
+plotting_logs('110521');
+% get_t1_t2_from_exp
+import = 1;
 
 if import 
-    t1 = [51531,51609,51758];
-    t2 = [51598,51747,51883];
+    t1 = [40980,41086,41125,41166,41206];
+    t2 = [41078,41117,41157,41197,41237];
     tb1 = t1(1);
     tb2 = t2(1);
-    record = grab_3mdata_chunks('032416',t1,t2,tb1,tb2); 
+    record = grab_3mdata_chunks('110521',t1,t2,tb1,tb2); 
     clearvars t1 t2 tb1 tb2 import
 end
 
 
+
 L = size(record,1);
-average_voltage_on_probes = zeros(L,33);
+average_voltage_on_probes = zeros(L,35);
 coil_current = zeros(L,1);
 
 for i = 1:L
@@ -22,7 +23,9 @@ for i = 1:L
 end
 
 figure(11)
-plot(coil_current,average_voltage_on_probes(:,:),'.')
+probes = [1,12,32,34,33,35];
+plot(coil_current,average_voltage_on_probes(:,probes))
+legend(num2str(probes'))
 
 k20 = average_voltage_on_probes(3,:)./coil_current(3)
 k170 = average_voltage_on_probes(2,:)./coil_current(2)
